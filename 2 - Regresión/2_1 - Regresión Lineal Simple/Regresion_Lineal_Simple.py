@@ -25,8 +25,20 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 1/3, rando
 #----------------------------------------------------------------------------------------------
 # Crear el modelo de Regresión Lineal Simple con el conjunto de datos de entrenamiento
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
 regression = LinearRegression()
 regression.fit(X_train, y_train)
+# Hallamos los coeficientes del modelo de regresión
+print(f'El coeficiente de la variable independiente es {regression.coef_}')
+print(f'El intercepto de la recta con el eje Y es {regression.intercept_}')
+
+# Cálculo del error cuadrático medio (MSE) de los *y_train* respecto a los *y* del modelo de predicción
+mse = mean_squared_error(y_train, regression.predict(X_train))
+print(f'El MSE de los datos de entrenamiento es {mse}')
+
+# Cálculo del coeficiente de determinación (r^2) de los *y_train* respecto a los *y* del modelo de predicción
+rcuadrado = r2_score(y_train, regression.predict(X_train))
+print(f'El coeficiente de determinación (r^2) de los datos de entrenamiento es {rcuadrado}')
 
 #----------------------------------------------------------------------------------------------
 # Predecir los datos (Regresión Lineal Simple) con el conjunto de datos de test
@@ -49,3 +61,11 @@ plt.title("Sueldo vs Años de Experiencia (Conjunto de datos de Testing)")
 plt.xlabel("Años de Experiencia")
 plt.ylabel("Sueldo (en $US)")
 plt.show()
+
+# Cálculo del error cuadrático medio (MSE) de los *y_test* respecto a los *y* del modelo de predicción
+mse = mean_squared_error(y_test, y_pred)
+print(f'El MSE de los datos de prueba es {mse}')
+
+# Cálculo del coeficiente de determinación (r^2) de los *y_test* respecto a los *y* del modelo de predicción
+rcuadrado = r2_score(y_test, y_pred)
+print(f'El coeficiente de determinación (r^2) de los datos de prueba es {rcuadrado}')
