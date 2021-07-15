@@ -99,13 +99,12 @@ import statsmodels.api as sm
 # Esta nueva columna se añade al inicio de X
 X = np.append(arr = np.ones((50, 1)).astype(int), values = X, axis = 1)
 
-# X_opt es la nueva matriz de variables independientes estadísticamente significativas
-# que optimiza la predicción del modelo
-
 # ELIMINACIÓN HACIA ATRÁS
 # 1er paso: Creamos el nivel de significación SL
 SL = 0.05
 
+# X_opt es la nueva matriz de variables independientes estadísticamente significativas
+# que optimiza la predicción del modelo
 # 2do paso: Se inicia  con todas la variables independientes
 X_opt = X[:, [0, 1, 2, 3, 4, 5]].tolist()
 
