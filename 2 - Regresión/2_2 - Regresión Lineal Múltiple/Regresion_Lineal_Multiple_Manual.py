@@ -96,7 +96,7 @@ import statsmodels.api as sm
 # Teniendo en cuenta que el p-valor mide la probabilidad que un coeficiente sea cero (0)
 # y en la matriz de variables independientes no está incluido el valor de b0, se simulará
 # añadiendo una columna de unos (1) para incluirlo en el análisis
-# Esta nueva columna se añade al final de X
+# Esta nueva columna se añade al inicio de X
 X = np.append(arr = np.ones((50, 1)).astype(int), values = X, axis = 1)
 
 # X_opt es la nueva matriz de variables independientes estadísticamente significativas
